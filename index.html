@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Vika, Let's Travel the World!</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/font-awesome-animation.min.css" />
+    <link rel="shortcut icon" href="assets/images/favicon.png" />
+
+    <style>
+        #bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -2;
+            background: url('assets/css/images/bg.gif') no-repeat center center;
+            background-size: cover;
+            animation: slowMove 60s linear infinite;
+        }
+
+        @keyframes slowMove {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            z-index: -1;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .button-back {
+            margin-top: 2em;
+            display: inline-block;
+            padding: 0.6em 1.5em;
+            background: #ffffffaa;
+            color: #222;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .button-back:hover {
+            background: #ffffff;
+        }
+
+        .sad {
+            color: #ffcccc;
+            font-size: 2em;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        // Função ao clicar em "No"
+        function handleNoClick() {
+            document.getElementById("question").classList.add("hidden");
+            document.getElementById("nav-buttons").classList.add("hidden");
+            document.getElementById("sad-message").classList.remove("hidden");
+            document.getElementById("back-button").classList.remove("hidden");
+        }
+
+        // Função ao clicar em "Back"
+        function handleBackClick() {
+            document.getElementById("question").classList.remove("hidden");
+            document.getElementById("nav-buttons").classList.remove("hidden");
+            document.getElementById("sad-message").classList.add("hidden");
+            document.getElementById("back-button").classList.add("hidden");
+        }
+    </script>
+</head>
+<body class="loading">
+
+    <!-- Fundo -->
+    <div id="bg"></div>
+    <div id="overlay"></div>
+
+    <!-- Conteúdo principal -->
+    <div id="wrapper">
+        <div id="main">
+            <header id="header">
+                <!-- Texto da pergunta -->
+                <div id="question">
+                    <h1>Vika, would you like to travel the world with me?</h1>
+                    <p>"Every journey is better with someone cool as you."</p>
+                    <p>"Let's make memories in every corner of the globe."</p>
+                </div>
+
+                <!-- Mensagem triste oculta por padrão -->
+                <div id="sad-message" class="hidden sad">
+                    <p>That's sad :(</p>
+                </div>
+
+                <!-- Botões de navegação -->
+                <nav id="nav-buttons">
+                    <ul>
+                        <li>
+                            <a href="login.html" class="icon fa-plane faa-pulse animated">
+                                <span class="label">Yes</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="handleNoClick()" class="icon fa-times-circle">
+                                <span class="label">No</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- Botão de voltar -->
+                <div id="back-button" class="hidden">
+                    <a class="button-back" onclick="handleBackClick()">Back</a>
+                </div>
+            </header>
+
+            <footer id="footer">
+                <span class="icon fa-globe"><span class="label">Explore</span></span>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Finalização -->
+    <script>
+        window.onload = function () { document.body.className = ''; }
+        window.ontouchmove = function () { return false; }
+        window.onorientationchange = function () { document.body.scrollTop = 0; }
+    </script>
+
+</body>
+</html>

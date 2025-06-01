@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vika Trip</title>
+
+  <!-- Font Awesome para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    /* Aplica box-sizing para todo mundo */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    /* Fundo */
+    body {
+      margin: 0;
+      height: 100vh;
+      background: url('assets/css/images/bg2.gif') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: background 1s ease-in-out;
+    }
+
+    /* Container do formulário */
+    .login-form {
+      background: rgba(40, 40, 40, 0.9);
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.8);
+      width: 350px;
+      color: #eee;
+      text-align: center;
+    }
+
+    /* Avatar */
+    .avtar img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #eee;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Inputs com ícones */
+    .input-group {
+      position: relative;
+      margin-bottom: 1.3rem;
+      width: 100%;
+    }
+
+    .input-group i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #bbb;
+      font-size: 1.2rem;
+      pointer-events: none;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 0.65rem 0.65rem 0.65rem 40px; /* espaço para o ícone */
+      border-radius: 6px;
+      border: none;
+      background-color: #555;
+      color: #eee;
+      font-size: 1rem;
+      outline: none;
+      transition: background-color 0.3s;
+      box-sizing: border-box;
+    }
+
+    input::placeholder {
+      color: #ccc;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      background-color: #666;
+    }
+
+    /* Botão */
+    .signin input[type="button"] {
+      background-color: #666;
+      color: #eee;
+      border: none;
+      border-radius: 6px;
+      padding: 0.85rem;
+      width: 100%;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .signin input[type="button"]:hover {
+      background-color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-form">
+    <div class="avtar">
+      <img src="https://github.com/joskebinho2049/viktravel/blob/main/output-onlinepngtools.png?raw=true" alt="Avatar" />
+    </div>
+    <form onsubmit="return false;">
+      <div class="input-group">
+        <i class="fa fa-user"></i>
+        <input type="text" id="username" placeholder="Name" autocomplete="off" />
+      </div>
+      <div class="input-group">
+        <i class="fa fa-lock"></i>
+        <input type="password" id="password" placeholder="Password" autocomplete="off" />
+      </div>
+      <div class="signin">
+        <input type="button" value="I accept! ❤️" onclick="validate()" />
+      </div>
+    </form>
+  </div>
+
+  <script src="login/js/sweetalert.min.js"></script>
+  <script>
+    function validate() {
+      const user = document.getElementById('username').value.trim();
+      const pass = document.getElementById('password').value;
+      if(user.toLowerCase() === 'vika' && pass === 'tripaloski') {
+        window.location.href = 'final.html';
+      } else {
+        swal('Oops!', 'Wrong username or password. Try again!', 'error');
+      }
+    }
+  </script>
+</body>
+</html>
